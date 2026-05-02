@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #050505;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-accent: #6366F1;
+  --color-accent-glow: rgba(99, 102, 241, 0.3);
+  --color-slate-primary: #F8FAFC;
+  --color-slate-secondary: #94A3B8;
+
+  --radius-bento: 24px;
+
+  --font-sans: 'Inter', 'Instrument Sans', 'sans-serif';
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'monospace';
+}
+
+@layer base {
+  body {
+    background-color: var(--color-midnight);
+    color: var(--color-slate-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .bento-card {
+    background-color: var(--color-surface);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-bento);
+    transition: all 0.3s ease;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px var(--color-accent-glow);
+  }
+
+  .glow-blob {
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(100px);
+    z-index: -1;
+    animation: float 20s infinite alternate;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(10vw, 10vh); }
+}

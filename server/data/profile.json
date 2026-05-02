@@ -1,0 +1,38 @@
+{
+  "profile": {
+    "name": "John Wesly P D",
+    "role": "Software Engineer",
+    "location": "Coimbatore, India",
+    "email": "johnweslypd@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/john-wesly-pd/",
+    "github": "https://github.com/johnwesly08/",
+    "phone": "+91 7092714600",
+    "summary": "An aspiring software engineer with strong foundations in Python, System Design, and API development."
+  },
+  "skills": {
+    "languages": ["Python", "Java", "JavaScript", "TypeScript"],
+    "web": ["React.js", "Next.js", "Node.js", "Express.js", "Django", "FastAPI", "REST APIs", "Tailwind CSS"],
+    "mobile": ["Flutter", "Kotlin", "Android SDK"],
+    "databases": ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Supabase"],
+    "devops": ["Docker", "Kubernetes", "Git", "GitHub Actions"],
+    "core": ["DSA", "OOPs", "OS", "Computer Networks", "DBMS", "System Design"]
+  },
+  "projects": [
+    {
+      "title": "Career Compass",
+      "description": "An AI-powered recruitment and career intelligence platform...",
+      "tech": ["Next.js", "TypeScript", "Node.js", "Express.js", "LLM Integration"],
+      "link": "https://github.com/johnwesly08/",
+      "demo": "#",
+      "win": "Automated resume processing and skill-gap analysis for data-driven hiring."
+    },
+    {
+      "title": "Convo",
+      "description": "A real-time messaging Android application...",
+      "tech": ["Kotlin", "Firebase", "Firestore", "FCM", "MVVM", "Coroutines"],
+      "link": "https://github.com/johnwesly08/",
+      "demo": "#",
+      "win": "Implemented efficient real-time state management with StateFlow."
+    }
+  ]
+}
