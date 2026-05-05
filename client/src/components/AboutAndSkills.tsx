@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
 import { motion } from 'framer-motion';
-import { PROFILE, SKILLS } from '@/constants';
+import { SKILLS } from '@/constants';
 
 export default function AboutAndSkills() {
   return (
@@ -19,17 +18,17 @@ export default function AboutAndSkills() {
             <h3 className="text-4xl font-bold text-gradient mb-2">About Me</h3>
             <div className="h-1 w-12 bg-gradient-to-r from-accent to-transparent rounded-full"></div>
           </div>
-          <p className="text-gray-400 leading-relaxed text-base font-light">
-            I am an engineering student at KGiSL Institute of Technology with a strong focus on 
-            full-stack development and IoT. I specialize in building scalable applications using the 
-            MERN stack and exploring the intersection of web technologies with embedded systems, 
-            specifically working with LoRa and ESP32 modules.
+<p className="text-gray-400 leading-relaxed text-base font-light">
+            I am a Software Developer experienced in both web and mobile development. I specialize 
+            in building scalable systems using the MERN stack and Python-based frameworks like Django, 
+            while also developing native Android and cross-platform mobile applications. I leverage 
+            Python and Java for core programming and complex problem-solving.
           </p>
           <p className="text-gray-400 leading-relaxed text-base font-light">
-            My journey is driven by a passion for creating robust, secure architectures, with a long-term 
-            vision of becoming a Software Architect. Recently, I have been expanding my technical arsenal 
-            by integrating AI agents into my development workflow and presenting research on secure 
-            communication networks.
+            My journey is driven by a passion for designing secure, end-to-end architectures, 
+            with a long-term vision of becoming a Software Architect. Currently, I am expanding 
+            my technical arsenal by exploring and integrating AI agents into my development 
+            workflow to build smarter, more efficient software solutions.
           </p>
         </motion.div>
 

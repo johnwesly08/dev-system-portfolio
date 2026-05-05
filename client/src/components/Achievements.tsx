@@ -1,8 +1,7 @@
 'use client';
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ACHIEVEMENTS, CERTIFICATIONS, EXPERIENCE, EDUCATION } from '@/constants';
-import { Award, GraduationCap, CheckCircle2, Briefcase } from 'lucide-react';
+import { ACHIEVEMENTS, CERTIFICATIONS, EDUCATION } from '@/constants';
+import { Award, GraduationCap, CheckCircle2 } from 'lucide-react';
 
 export default function Achievements() {
   return (

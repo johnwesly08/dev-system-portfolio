@@ -6,7 +6,7 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/john-wesly-pd/",
   github: "https://github.com/johnwesly08/",
   phone: "+91 7092714600",
-  summary: "A software engineer specializing in the MERN stack, Java, and IoT architecture. Passionate about building scalable backend systems, secure hardware communications, and AI-integrated applications, with a proven track record in national hackathons and professional certifications from Google, IBM, and Meta.",
+  summary: "Architecting scalable web and mobile ecosystems with precision. I leverage the MERN stack, Django, and AI-driven workflows to build resilient, production-ready systems. Driven by a mastery of Python and Java, I transform complex engineering challenges into secure, high-performance software architectures.",
 };
 
 export const SKILLS = {
@@ -14,7 +14,7 @@ export const SKILLS = {
   web: ["React.js", "Next.js", "Node.js", "Express.js", "Django", "FastAPI", "Tailwind CSS"],
   mobile: ["Flutter", "Kotlin", "Android SDK"],
   databases: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Supabase"],
-  hardwareAndAI: ["ESP32", "LoRa / LPWAN", "Gemini", "AI Agents", "LLM Integration"],
+  hardwareAndAI: ["ESP32", "LoRa / LPWAN", "AI Agents", "LLM Integration", "Claude", "Gemini"],
   core: ["DSA", "System Design", "OS", "Computer Networks", "DBMS"],
 };
 
@@ -23,7 +23,7 @@ export const PROJECTS = [
     title: "Career Compass",
     description: "An AI-powered recruitment and career intelligence platform that analyzes resumes and user skills to provide personalized career recommendations and matching scores. Built to reduce manual screening effort for institutions.",
     tech: ["Next.js", "TypeScript", "Node.js", "Express.js", "LLM Integration"],
-    link: "https://github.com/johnwesly08/",
+    link: "https://github.com/johnwesly08/Career-Compass",
     demo: "#",
     win: "Automated resume processing and skill-gap analysis for data-driven hiring."
   },
@@ -31,7 +31,7 @@ export const PROJECTS = [
     title: "Convo",
     description: "A real-time messaging Android application featuring secure authentication, live chat synchronization, and push notifications using MVVM architecture for reliable message delivery.",
     tech: ["Kotlin", "Firebase", "Firestore", "FCM", "MVVM"],
-    link: "https://github.com/johnwesly08/",
+    link: "https://github.com/johnwesly08/Convo.git",
     demo: "#",
     win: "Implemented efficient real-time state management with StateFlow."
   },
@@ -39,7 +39,7 @@ export const PROJECTS = [
     title: "Pedals",
     description: "A smart campus bicycle rental and mobility management platform with OTP-based authentication and real-time stand tracking. Designed for high-concurrency student use.",
     tech: ["Flutter", "Firebase", "Supabase", "GetX", "REST APIs"],
-    link: "https://github.com/johnwesly08/",
+    link: "https://github.com/johnwesly08/Pedals.git",
     demo: "#",
     win: "Scalable deployment planned for 200+ students across multiple campus stands."
   },
@@ -47,7 +47,7 @@ export const PROJECTS = [
     title: "Multi Cart",
     description: "A multi-tenant e-commerce platform enabling independent vendors to manage their own storefronts, products, and orders through a unified system with role-based access.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-    link: "https://github.com/johnwesly08/",
+    link: "https://github.com/johnwesly08/MultiCart.git",
     demo: "#",
     win: "Achieved complete data isolation for multiple concurrent vendor accounts."
   },
