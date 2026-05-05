@@ -28,6 +28,14 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+app.get('/api/env-check', (req, res) => {
+  res.json({
+    EMAIL_USER: process.env.EMAIL_USER || null,
+    EMAIL_PASS_EXISTS: !!process.env.EMAIL_PASS,
+    EMAIL_TO: process.env.EMAIL_TO || null,
+  });
+});
+
 // Profile API
 app.get('/api/profile', (req, res) => {
   try {
