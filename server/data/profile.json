@@ -22,7 +22,7 @@
       "title": "Career Compass",
       "description": "An AI-powered recruitment and career intelligence platform...",
       "tech": ["Next.js", "TypeScript", "Node.js", "Express.js", "LLM Integration"],
-      "link": "https://github.com/johnwesly08/",
+      "link": "https://github.com/johnwesly08/career-compass.git",
       "demo": "#",
       "win": "Automated resume processing and skill-gap analysis for data-driven hiring."
     },
@@ -30,7 +30,7 @@
       "title": "Convo",
       "description": "A real-time messaging Android application...",
       "tech": ["Kotlin", "Firebase", "Firestore", "FCM", "MVVM", "Coroutines"],
-      "link": "https://github.com/johnwesly08/",
+      "link": "https://github.com/johnwesly08/Convo.git",
       "demo": "#",
       "win": "Implemented efficient real-time state management with StateFlow."
     }
