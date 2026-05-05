@@ -34,6 +34,12 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: "All fields are required" });
   }
 
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    return res.status(500).json({
+      error: "Mail server is not configured. Set EMAIL_USER and EMAIL_PASS on the server.",
+    });
+  }
+
   // Configure your SMTP transporter
   // Replace these with environment variables in production
   const transporter = nodemailer.createTransport({
@@ -45,7 +51,8 @@ app.post('/api/contact', async (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
+    from: process.env.EMAIL_USER,
+    replyTo: email,
     to: 'johnweslypd@gmail.com',
     subject: `Portfolio Contact: ${name}`,
     text: `Message from ${name} (${email}):\n\n${message}`
