@@ -6,6 +6,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Contact() {
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,8 +26,8 @@ export default function Contact() {
     setIsSending(true);
     setErrorMessage('');
 
-    try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+    try { 
+      const response = await fetch(`${BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
