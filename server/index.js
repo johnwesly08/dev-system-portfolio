@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -44,6 +45,7 @@ app.get('/api/profile', (req, res) => {
 // Contact API
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
+  const recipient = process.env.EMAIL_TO || process.env.EMAIL_USER;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -57,11 +59,17 @@ app.post('/api/contact', async (req, res) => {
     });
   }
 
+  if (!recipient) {
+    return res.status(500).json({
+      error: "Mail recipient is not configured",
+    });
+  }
+
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       replyTo: email,
-      to: process.env.EMAIL_TO,
+      to: recipient,
       subject: `Portfolio Contact: ${name}`,
       text: `Message from ${name} (${email}):\n\n${message}`
     });
