@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
-const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,57 +9,65 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// 1. Public Profile API
+// Rate limiter
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 50,
+});
+app.use('/api/contact', limiter);
+
+// Mail transporter (global)
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+// Profile API
 app.get('/api/profile', (req, res) => {
   try {
-    // In a real scenario, this would come from a database
-    // For now, we use the constants we defined
     const profileData = require('./data/profile.json');
     res.json({
       status: "online",
       data: profileData,
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: "Failed to fetch profile data" });
   }
 });
 
-// 2. Mail Server Endpoint
+// Contact API
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "All fields are required" });
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!name || !email || !message || !emailRegex.test(email)) {
+    return res.status(400).json({ error: "Valid input required" });
   }
 
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     return res.status(500).json({
-      error: "Mail server is not configured. Set EMAIL_USER and EMAIL_PASS on the server.",
+      error: "Mail server is not configured",
     });
   }
 
-  // Configure your SMTP transporter
-  // Replace these with environment variables in production
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER, // Your email
-      pass: process.env.EMAIL_PASS  // Your App Password
-    }
-  });
-
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    replyTo: email,
-    to: 'johnweslypd@gmail.com',
-    subject: `Portfolio Contact: ${name}`,
-    text: `Message from ${name} (${email}):\n\n${message}`
-  };
-
   try {
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      replyTo: email,
+      to: process.env.EMAIL_TO,
+      subject: `Portfolio Contact: ${name}`,
+      text: `Message from ${name} (${email}):\n\n${message}`
+    });
+
     res.status(200).json({ message: "Email sent successfully!" });
+
   } catch (error) {
     console.error("Mail Error:", error);
     res.status(500).json({ error: "Failed to send email" });
@@ -68,5 +75,5 @@ app.post('/api/contact', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Dev-System Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
