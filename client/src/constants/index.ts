@@ -10,7 +10,7 @@ export const PROFILE = {
 };
 
 export const SKILLS = {
-  languages: ["Python", "Java", "JavaScript", "TypeScript", "C"],
+  languages: ["Python", "Java", "JavaScript"],
   web: ["React.js", "Next.js", "Node.js", "Express.js", "Django", "FastAPI", "Tailwind CSS"],
   mobile: ["Flutter", "Kotlin", "Android SDK"],
   databases: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Supabase"],
@@ -46,7 +46,7 @@ export const PROJECTS = [
   {
     title: "Multi Cart",
     description: "A multi-tenant e-commerce platform enabling independent vendors to manage their own storefronts, products, and orders through a unified system with role-based access.",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     link: "https://github.com/johnwesly08/",
     demo: "#",
     win: "Achieved complete data isolation for multiple concurrent vendor accounts."

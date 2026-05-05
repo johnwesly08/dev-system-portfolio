@@ -39,33 +39,6 @@ export default function Achievements() {
 
         {/* Right Column: Experience, Ed & Certs */}
         <div className="space-y-16">
-          
-          {/* Experience Section */}
-          <div className="space-y-6">
-            <div className="mb-8">
-              <h3 className="text-4xl font-bold text-gradient mb-2 flex items-center gap-3">
-                <Briefcase className="text-accent" size={28} />
-                Experience
-              </h3>
-              <div className="h-1 w-12 bg-gradient-to-r from-accent to-transparent rounded-full"></div>
-            </div>
-            {EXPERIENCE.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="glass p-6 rounded-2xl"
-              >
-                <div className="flex justify-between items-start mb-2 gap-4">
-                  <h4 className="font-semibold text-base">{exp.role}</h4>
-                  <span className="text-xs font-mono text-gray-600 whitespace-nowrap">{exp.period}</span>
-                </div>
-                <p className="text-accent text-sm font-medium mb-2">{exp.company}</p>
-                <p className="text-gray-400 text-sm leading-relaxed font-light">{exp.description}</p>
-              </motion.div>
-            ))}
-          </div>
 
           {/* Education Section */}
           <div className="space-y-6">

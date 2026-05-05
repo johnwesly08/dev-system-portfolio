@@ -224,7 +224,7 @@ export default function Contact() {
 
       <div className="text-center mt-16 pt-8 border-t border-white/5">
         <p className="text-gray-500 text-sm font-light">
-          © 2024 John Wesly P D. Designed with passion.
+          © 2026 John Wesly P D. Designed with passion.
         </p>
       </div>
     </section>
