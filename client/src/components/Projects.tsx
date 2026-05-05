@@ -3,14 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PROJECTS } from '@/constants';
 import { ExternalLink } from 'lucide-react';
-
-// Custom SVG for GitHub
-const GithubIcon = ({ size = 24 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22c8.3 0 11-8 11-11 0-4.5-3.5-8-8-8-2 0-3 1-4 2a5 5 0 0 0-4 0c-1-1-2-2-4-2-4.5 0-8 3.5-8 8 0 3 2 5 5 6v1c0 1 1 1 1 1h11z" />
-    <path d="M9 12h6" />
-  </svg>
-);
+import { FaGithub } from 'react-icons/fa6';
 
 export default function Projects() {
   return (
@@ -38,7 +31,7 @@ export default function Projects() {
               </h4>
               <div className="flex gap-3 ml-4 flex-shrink-0">
                 <a href={project.link} target="_blank" className="text-gray-500 hover:text-accent transition-colors">
-                  <GithubIcon size={20} />
+                  <FaGithub size={20} />
                 </a>
                 <a href={project.demo} target="_blank" className="text-gray-500 hover:text-accent transition-colors">
                   <ExternalLink size={20} />

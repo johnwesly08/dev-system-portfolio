@@ -3,23 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PROFILE } from '@/constants';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
-
-// Custom SVG for GitHub
-const GithubIcon = ({ size = 24 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22c8.3 0 11-8 11-11 0-4.5-3.5-8-8-8-2 0-3 1-4 2a5 5 0 0 0-4 0c-1-1-2-2-4-2-4.5 0-8 3.5-8 8 0 3 2 5 5 6v1c0 1 1 1 1 1h11z" />
-    <path d="M9 12h6" />
-  </svg>
-);
-
-// Custom SVG for LinkedIn
-const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" rx="2" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,20 +12,43 @@ export default function Contact() {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
+    setIsSending(true);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
-      setIsSubmitted(false);
-    }, 3000);
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to send message';
+      setErrorMessage(message);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -167,9 +174,10 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="w-full bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-accent/50"
+            disabled={isSending}
+            className="w-full bg-accent hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-accent/50"
           >
-            Send Message <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+            {isSending ? 'Sending...' : 'Send Message'} <Send size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
 
           {isSubmitted && (
@@ -180,6 +188,12 @@ export default function Contact() {
             >
               ✓ Message sent successfully! I'll get back to you soon.
             </motion.div>
+          )}
+
+          {errorMessage && (
+            <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-center text-red-300 font-medium">
+              {errorMessage}
+            </div>
           )}
         </form>
       </motion.div>
@@ -193,7 +207,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="p-4 bg-white/5 hover:bg-accent/10 border border-white/10 hover:border-accent/50 rounded-lg transition-all hover:scale-110 text-gray-400 hover:text-accent"
         >
-          <GithubIcon size={24} />
+          <FaGithub size={24} />
         </motion.a>
         <motion.a
           href={PROFILE.linkedin}
@@ -204,7 +218,7 @@ export default function Contact() {
           transition={{ delay: 0.1 }}
           className="p-4 bg-white/5 hover:bg-accent/10 border border-white/10 hover:border-accent/50 rounded-lg transition-all hover:scale-110 text-gray-400 hover:text-accent"
         >
-          <LinkedinIcon size={24} />
+          <FaLinkedinIn size={24} />
         </motion.a>
       </div>
 
