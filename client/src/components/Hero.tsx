@@ -14,13 +14,13 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-4xl"
+        className="max-w-4xl px-4"
       >
-        <h2 className="text-accent font-mono mb-4 tracking-widest uppercase text-sm">Available for opportunities</h2>
-        <h1 className="text-5xl md:text-8xl font-bold mb-6 leading-tight">
+        <h2 className="text-accent font-mono mb-6 tracking-widest uppercase text-xs font-semibold">• Available for opportunities</h2>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 leading-tight text-white">
           Building <span className="text-gradient">Scalable Systems</span> & AI-Driven Experiences
         </h1>
-        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed font-light">
           {PROFILE.summary}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

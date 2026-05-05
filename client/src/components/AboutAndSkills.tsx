@@ -9,22 +9,27 @@ export default function AboutAndSkills() {
       <div className="grid md:grid-cols-2 gap-16 items-start">
         {/* About Part */}
         <motion.div
+          id="skills"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-7"
         >
-          <h3 className="text-3xl font-bold text-gradient">About Me</h3>
-          <p className="text-gray-400 leading-relaxed text-lg">
-            I am a software engineer with a background in Electronics and Communication Engineering,
-            which gives me a unique perspective on the intersection of hardware and software.
-            I specialize in building end-to-end applications, from high-performance backends
-            to intuitive mobile interfaces.
+          <div>
+            <h3 className="text-4xl font-bold text-gradient mb-2">About Me</h3>
+            <div className="h-1 w-12 bg-gradient-to-r from-accent to-transparent rounded-full"></div>
+          </div>
+          <p className="text-gray-400 leading-relaxed text-base font-light">
+            I am an engineering student at KGiSL Institute of Technology with a strong focus on 
+            full-stack development and IoT. I specialize in building scalable applications using the 
+            MERN stack and exploring the intersection of web technologies with embedded systems, 
+            specifically working with LoRa and ESP32 modules.
           </p>
-          <p className="text-gray-400 leading-relaxed text-lg">
-            My journey is driven by curiosity and a desire to solve real-world problems,
-            as evidenced by my success in the Smart India Hackathon and professional
-            certifications from industry leaders like Google, Meta, and IBM.
+          <p className="text-gray-400 leading-relaxed text-base font-light">
+            My journey is driven by a passion for creating robust, secure architectures, with a long-term 
+            vision of becoming a Software Architect. Recently, I have been expanding my technical arsenal 
+            by integrating AI agents into my development workflow and presenting research on secure 
+            communication networks.
           </p>
         </motion.div>
 
@@ -33,18 +38,24 @@ export default function AboutAndSkills() {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="space-y-8"
+          className="space-y-7"
         >
-          <h3 className="text-3xl font-bold text-gradient">Technical Arsenal</h3>
+          <div>
+            <h3 className="text-4xl font-bold text-gradient mb-2">Technical Arsenal</h3>
+            <div className="h-1 w-12 bg-gradient-to-r from-accent to-transparent rounded-full"></div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {Object.entries(SKILLS).map(([category, skills]) => (
-              <div key={category} className="space-y-3">
-                <h4 className="text-sm font-mono uppercase text-gray-500 tracking-wider">
+              <div key={category} className="space-y-2.5">
+                <h4 className="text-xs font-mono uppercase text-gray-600 tracking-wider font-semibold">
                   {category.replace(/([A-Z])/g, ' $1').trim()}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((skill) => (
-                    <span key={skill} className="glass px-3 py-1 rounded-md text-xs font-medium text-gray-300 hover:text-accent transition-colors cursor-default">
+                    <span 
+                      key={skill} 
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-white/5 border border-white/10 hover:border-accent/60 hover:text-accent hover:bg-accent/5 transition-all duration-300 cursor-default"
+                    >
                       {skill}
                     </span>
                   ))}

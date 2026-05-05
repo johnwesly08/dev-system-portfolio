@@ -2,14 +2,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROJECTS } from '@/constants';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+
+// Custom SVG for GitHub
+const GithubIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22c8.3 0 11-8 11-11 0-4.5-3.5-8-8-8-2 0-3 1-4 2a5 5 0 0 0-4 0c-1-1-2-2-4-2-4.5 0-8 3.5-8 8 0 3 2 5 5 6v1c0 1 1 1 1 1h11z" />
+    <path d="M9 12h6" />
+  </svg>
+);
 
 export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
       <div className="text-center mb-16">
-        <h3 className="text-4xl font-bold mb-4 text-gradient">Featured Work</h3>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <h3 className="text-5xl font-bold mb-4 text-gradient">Featured Work</h3>
+        <p className="text-gray-500 max-w-2xl mx-auto text-base font-light">
           A selection of projects where I applied engineering principles to solve complex problems.
         </p>
       </div>
@@ -24,25 +32,29 @@ export default function Projects() {
             transition={{ delay: index * 0.1 }}
             className="glass p-8 rounded-3xl group hover:border-accent/50 transition-all flex flex-col h-full"
           >
-            <div className="flex justify-between items-start mb-6">
-              <h4 className="text-2xl font-bold group-hover:text-accent transition-colors">
+            <div className="flex justify-between items-start mb-5">
+              <h4 className="text-xl font-semibold group-hover:text-accent transition-colors leading-tight">
                 {project.title}
               </h4>
-              <div className="flex gap-3">
-                <a href={project.link} target="_blank" className="text-gray-400 hover:text-white transition-colors"><Github size={20} /></a>
-                <a href={project.demo} target="_blank" className="text-gray-400 hover:text-white transition-colors"><ExternalLink size={20} /></a>
+              <div className="flex gap-3 ml-4 flex-shrink-0">
+                <a href={project.link} target="_blank" className="text-gray-500 hover:text-accent transition-colors">
+                  <GithubIcon size={20} />
+                </a>
+                <a href={project.demo} target="_blank" className="text-gray-500 hover:text-accent transition-colors">
+                  <ExternalLink size={20} />
+                </a>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed flex-grow">
+            <p className="text-gray-400 mb-6 leading-relaxed flex-grow text-sm font-light">
               {project.description}
             </p>
-            <div className="mb-6">
-              <div className="text-xs font-mono text-accent uppercase mb-3 tracking-widest">Key Achievement</div>
-              <p className="text-sm text-gray-300 italic">"{project.win}"</p>
+            <div className="mb-6 pb-4 border-t border-white/5">
+              <div className="text-xs font-mono text-accent/80 uppercase mb-2 tracking-wider font-semibold">• Key Achievement</div>
+              <p className="text-sm text-gray-300 leading-relaxed">{project.win}</p>
             </div>
-            <div className="flex flex-wrap gap-2 mt-auto">
+            <div className="flex flex-wrap gap-2 mt-auto pt-4">
               {project.tech.map((t) => (
-                <span key={t} className="text-[10px] font-bold uppercase tracking-tighter bg-white/5 px-2 py-1 rounded border border-white/10 text-gray-400">
+                <span key={t} className="text-[11px] font-semibold uppercase tracking-tight bg-white/5 px-2.5 py-1.5 rounded-md border border-white/10 text-gray-400 hover:text-gray-300 hover:border-white/20 transition-all">
                   {t}
                 </span>
               ))}
