@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Contact() {
-  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +27,11 @@ export default function Contact() {
     setErrorMessage('');
 
     try { 
-      const response = await fetch(`${BASE_URL}/api/contact`, {
+      if (!API_BASE_URL) {
+        throw new Error('Contact API is not configured for this deployment.');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,9 +59,9 @@ export default function Contact() {
   return (
     <section id="contact" className="py-32 px-6 max-w-6xl mx-auto">
       <div className="text-center mb-16">
-        <h3 className="text-5xl font-bold mb-4 text-gradient">Let's Connect</h3>
+        <h3 className="text-5xl font-bold mb-4 text-gradient">Let&apos;s Connect</h3>
         <p className="text-gray-500 max-w-2xl mx-auto text-base font-light">
-          Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something amazing together.
+          Have a project in mind or want to collaborate? I&apos;d love to hear from you. Let&apos;s create something amazing together.
         </p>
       </div>
 
@@ -187,7 +191,7 @@ export default function Contact() {
               animate={{ opacity: 1, scale: 1 }}
               className="p-4 bg-accent/10 border border-accent/50 rounded-lg text-center text-accent font-medium"
             >
-              ✓ Message sent successfully! I'll get back to you soon.
+              ✓ Message sent successfully! I&apos;ll get back to you soon.
             </motion.div>
           )}
 
